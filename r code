@@ -1,0 +1,14 @@
+player = as.integer(readline("玩家請出拳： (1) 剪刀 (2) 石頭 (3) 布："))
+com = sample(-4:-2, 1)  #(-4) 剪刀 (-3) 布 (-2) 石頭
+hand = c("剪刀", "石頭", "布", "剪刀")
+result = player + com
+if (result == 0 || result == -3) {
+    print(sprintf("你出了:%s , 電腦出了:%s", hand[player], hand[-1*com]))
+    print("平手")
+} else if (result == -1) {
+    print(sprintf("你出了:%s , 電腦出了:%s", hand[player], hand[-1*com]))
+    print("你輸了")
+} else {
+    print(sprintf("你出了:%s , 電腦出了:%s", hand[player], hand[-1*com]))
+    print("你贏了")
+}
