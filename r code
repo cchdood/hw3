@@ -1,3 +1,5 @@
+#PB2
+
 player = as.integer(readline("玩家請出拳： (1) 剪刀 (2) 石頭 (3) 布："))
 com = sample(-4:-2, 1)  #(-4) 剪刀 (-3) 布 (-2) 石頭
 hand = c("剪刀", "石頭", "布", "剪刀")
@@ -12,3 +14,23 @@ if (result == 0 || result == -3) {
     print(sprintf("你出了:%s , 電腦出了:%s", hand[player], hand[-1*com]))
     print("你贏了")
 }
+
+
+#PB1
+
+BuildFibonacci = function (n) {
+    if (n == 1) {
+        return(c(0))
+    } else if (n == 2) {
+        return(c(0, 1))
+    } else {
+        seq = c(0, 1)
+        for (i in c(3:n)) {
+            seq = append(seq, seq[i-1] + seq[i-2])
+        }
+        return(seq)
+    }
+}
+
+vec = BuildFibonacci(50)
+print(vec)
