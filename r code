@@ -1,9 +1,41 @@
-subx <- seq(0,100,by = 1)
-x = c(subx, subx, subx)
-suby_1 <- dbinom(subx, 100, 0.5)
-suby_2 <- dbinom(subx, 100, 0.7)
-suby_3 <- dbinom(subx, 100, 0.3)
-y = c(suby_1, suby_2, suby_3)
-png(file = "pb1.png")
-plot(x,y)
-dev.off()
+n1=1; sample1 = c()
+n2=5; sample2 = c()
+n3=10; sample3 = c()
+n4=100; sample4 = c()
+n5=500; sample5 = c()
+
+shapen = 1
+scalen = 0.09
+
+for (i in 1:50000) {
+  sample1[i] = mean(rgamma(n1,shapen,scalen))
+  sample2[i] = mean(rgamma(n2,shapen,scalen))
+  sample3[i] = mean(rgamma(n3,shapen,scalen))
+  sample4[i] = mean(rgamma(n4,shapen,scalen))
+  sample5[i] = mean(rgamma(n5,shapen,scalen))
+}
+
+s = sample5
+d = density(sample5)
+plot(d, col='yellow', type = 'l',
+     main = 'CLT on gamma dist.(scale=0.09, shape=1)',
+     xlab = 'x-bar')
+
+s = sample1
+d = density(sample1)
+points(d, col='red', type = 'l')
+
+s = sample2
+d = density(sample2)
+points(d, col='blue', type = 'l')
+
+s = sample3
+d = density(sample3)
+points(d, col='green', type = 'l')
+
+s = sample4
+d = density(sample4)
+points(d, col='black', type = 'l')
+
+legend("topright", legend=c("n=1", "n=5", "n=10", "n=100", "n=500"),
+       col=c("red", "blue", "green", "yellow", "black"), lty = "solid", cex=1)
